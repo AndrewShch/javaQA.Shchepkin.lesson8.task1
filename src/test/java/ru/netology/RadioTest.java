@@ -42,13 +42,27 @@ public class RadioTest {
     }
     @Test
     void increaseStation(){
-        rad.setCurrentStation(7);
+        rad.setCurrentStation(3);
 
         rad.increaseStation();
-        assertEquals(8,rad.getCurrentStation());
+        assertEquals(4,rad.getCurrentStation());
+    }
+    @Test
+    void transitionFromMaxToMinStation(){
+        rad.setCurrentStation(9);
+
+        rad.increaseStation();
+        assertEquals(0,rad.getCurrentStation());
     }
     @Test
     void downStation(){
+        rad.setCurrentStation(2);
+
+        rad.downStation();
+        assertEquals(1,rad.getCurrentStation());
+    }
+    @Test
+    void transitionFromMimToMaxStation(){
         rad.setCurrentStation(2);
 
         rad.downStation();
@@ -65,24 +79,38 @@ public class RadioTest {
     }
     @Test
     void shouldNotSetVolumeAboveMax() {
-        rad.setCurrentVolume(5);
+        rad.setCurrentVolume(10);
 
         rad.setCurrentVolume(11);
-        assertEquals(5, rad.getCurrentVolume());
+        assertEquals(10, rad.getCurrentVolume());
     }
     @Test
     void increaseVolume(){
-        rad.setCurrentVolume(8);
+        rad.setCurrentVolume(6);
 
         rad.increaseVolume();
-        assertEquals(9,rad.getCurrentVolume());
+        assertEquals(7,rad.getCurrentVolume());
+    }
+    @Test
+    void transitionFromMaxToMinVolume(){
+        rad.setCurrentVolume(10);
+
+        rad.increaseVolume();
+        assertEquals(0,rad.getCurrentVolume());
     }
     @Test
     void downVolume(){
-        rad.setCurrentVolume(5);
+        rad.setCurrentVolume(6);
 
         rad.downVolume();
-        assertEquals(4,rad.getCurrentVolume());
+        assertEquals(5,rad.getCurrentVolume());
+    }
+    @Test
+    void transitionFromMinToMaxVolume(){
+        rad.setCurrentVolume(0);
+
+        rad.downVolume();
+        assertEquals(10,rad.getCurrentVolume());
     }
 
 }
