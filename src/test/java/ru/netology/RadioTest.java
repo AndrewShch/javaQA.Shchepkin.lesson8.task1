@@ -9,14 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public class RadioTest {
     Radio rad = new Radio();
     @Test
-    public void createRadio() {
+     void createRadio() {
         String expected = "Radio";
         assertNull(rad.getName());
         rad.setName(expected);
         assertEquals(expected, rad.getName());
     }
     @Test
-    void InitFields(){
+    void initFields(){
         assertEquals(9, rad.getMaxStation());
         assertEquals(0, rad.getMinStation());
         assertEquals(10, rad.getMaxVolume());
