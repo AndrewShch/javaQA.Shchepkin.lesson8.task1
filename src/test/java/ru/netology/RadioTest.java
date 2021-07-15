@@ -63,10 +63,10 @@ public class RadioTest {
     }
     @Test
     void transitionFromMimToMaxStation(){
-        rad.setCurrentStation(2);
+        rad.setCurrentStation(0);
 
         rad.downStation();
-        assertEquals(1,rad.getCurrentStation());
+        assertEquals(9,rad.getCurrentStation());
     }
 
     ///Тестирование громкости радио
@@ -106,11 +106,11 @@ public class RadioTest {
         assertEquals(5,rad.getCurrentVolume());
     }
     @Test
-    void transitionFromMinToMaxVolume(){
-        rad.setCurrentVolume(0);
+   void transitionFromMinToMaxVolume(){
+       rad.setCurrentVolume(0);
 
-        rad.downVolume();
-        assertEquals(10,rad.getCurrentVolume());
+       rad.downVolume();
+       assertEquals(10,rad.getCurrentVolume());
     }
 
 }
