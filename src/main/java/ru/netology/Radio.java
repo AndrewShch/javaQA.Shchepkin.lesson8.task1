@@ -4,19 +4,38 @@ public class Radio {
     private String name;
     private int currentStation;
     private int currentVolume;
-    private int maxStation = 10;
+    private int amountStation = 10;
+    private int maxStation;
     private int minStation = 0;
     private int maxVolume = 100;
     private int minVolume = 0;
     private boolean on;
 
+
     public Radio(){}
 
-    public Radio( int maxStation) {
-        this.maxStation = maxStation;
-
+    public Radio( int amountStation) {
+        this.amountStation = amountStation;
 
     }
+    public void setMaxStation() {
+        maxStation = amountStation - 1;
+        this.maxStation = maxStation ;
+    }
+
+    public int getMaxStation() {
+        return maxStation ;
+    }
+
+
+    public int getAmountStation() {
+        return amountStation;
+    }
+
+    public void setAmountStation(int amountStation) {
+        this.amountStation = amountStation;
+    }
+
 
     public boolean isOn() {
         return on;
@@ -60,14 +79,6 @@ public class Radio {
         this.minStation = minStation;
     }
 
-
-    public int getMaxStation() {
-        return maxStation;
-    }
-
-    public void setMaxStation(int maxStation) {
-        this.maxStation = maxStation;
-    }
 
 
     public void setCurrentStation(int currentStation) {
