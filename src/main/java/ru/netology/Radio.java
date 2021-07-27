@@ -30,10 +30,6 @@ public class Radio {
         this.currentStation = currentStation;
     }
 
-    public int getCurrentStation() {
-        return currentStation;
-    }
-
     public void increaseStation() {
         if (currentStation >= maxStation) {
             setCurrentStation(minStation);
@@ -58,10 +54,6 @@ public class Radio {
             return;
         }
         this.currentVolume = currentVolume;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
     }
 
     public void increaseVolume() {
