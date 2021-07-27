@@ -12,9 +12,10 @@ public class RadioTest {
     @Test
     void initFields() {
         Radio rad = new Radio(20);
-        rad.setMaxStation();
+
+        rad.setCurrentStation(15);
         assertEquals(20, rad.getAmountStation());
-        assertEquals(19, rad.getMaxStation());
+        assertEquals(15,rad.getCurrentStation());
 
     }
 
@@ -36,7 +37,6 @@ public class RadioTest {
     @Test
     void shouldNotSetStationBelowMin() {
         Radio rad = new Radio(20);
-        rad.setMaxStation();
         rad.setCurrentStation(5);
 
         rad.setCurrentStation(-1);
@@ -46,7 +46,6 @@ public class RadioTest {
     @Test
     void shouldNotSetStationAboveMax() {
         Radio rad = new Radio(20);
-        rad.setMaxStation();
         rad.setCurrentStation(18);
 
         rad.setCurrentStation(21);
@@ -56,7 +55,6 @@ public class RadioTest {
     @Test
     void increaseStation() {
         Radio rad = new Radio(20);
-        rad.setMaxStation();
         rad.setCurrentStation(15);
         rad.increaseStation();
         assertEquals(16, rad.getCurrentStation());
@@ -65,7 +63,6 @@ public class RadioTest {
     @Test
     void transitionFromMaxToMinStation() {
         Radio rad = new Radio(20);
-        rad.setMaxStation();
         rad.setCurrentStation(19);
 
         rad.increaseStation();
@@ -75,7 +72,6 @@ public class RadioTest {
     @Test
     void downStation() {
         Radio rad = new Radio(20);
-        rad.setMaxStation();
         rad.setCurrentStation(18);
         rad.downStation();
         assertEquals(17, rad.getCurrentStation());
@@ -84,7 +80,6 @@ public class RadioTest {
     @Test
     void transitionFromMimToMaxStation() {
         Radio rad = new Radio(20);
-        rad.setMaxStation();
         rad.setCurrentStation(0);
 
         rad.downStation();
