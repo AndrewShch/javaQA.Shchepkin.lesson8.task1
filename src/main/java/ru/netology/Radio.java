@@ -4,38 +4,28 @@ public class Radio {
     private String name;
     private int currentStation;
     private int currentVolume;
-    private int amountStation = 10;
-    private int maxStation;
+    private int maxStation = 9;
     private int minStation = 0;
     private int maxVolume = 100;
     private int minVolume = 0;
     private boolean on;
 
 
-    public Radio(){}
+    public Radio() {
+    }
 
-    public Radio( int amountStation) {
-        this.amountStation = amountStation;
+    public Radio(int maxStation) {
+        this.maxStation = maxStation - 1;
 
     }
+
     public void setMaxStation() {
-        maxStation = amountStation - 1;
-        this.maxStation = maxStation ;
+        this.maxStation = maxStation;
     }
 
     public int getMaxStation() {
         return maxStation;
     }
-
-
-    public int getAmountStation() {
-        return amountStation;
-    }
-
-    public void setAmountStation(int amountStation) {
-        this.amountStation = amountStation;
-    }
-
 
     public boolean isOn() {
         return on;
@@ -80,12 +70,11 @@ public class Radio {
     }
 
 
-
     public void setCurrentStation(int currentStation) {
         if (currentStation < minStation) {
             return;
         }
-        if (currentStation > amountStation-1) {
+        if (currentStation > maxStation) {
             return;
         }
         this.currentStation = currentStation;
@@ -96,7 +85,7 @@ public class Radio {
     }
 
     public void increaseStation() {
-        if (currentStation >= amountStation-1) {
+        if (currentStation >= maxStation) {
             setCurrentStation(minStation);
         } else {
             currentStation = currentStation + 1;
@@ -105,7 +94,7 @@ public class Radio {
 
     public void downStation() {
         if (currentStation <= minStation) {
-            setCurrentStation(amountStation-1);
+            setCurrentStation(maxStation);
         } else {
             currentStation = currentStation - 1;
         }
@@ -140,6 +129,4 @@ public class Radio {
             currentVolume = currentVolume - 1;
         }
     }
-
-
-    }
+}

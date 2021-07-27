@@ -12,9 +12,8 @@ public class RadioTest {
     @Test
     void initFields() {
         Radio rad = new Radio(20);
-
         rad.setCurrentStation(15);
-        assertEquals(20, rad.getAmountStation());
+        assertEquals(19,rad.getMaxStation());
         assertEquals(15,rad.getCurrentStation());
 
     }
@@ -22,15 +21,7 @@ public class RadioTest {
     @Test
     void checkMaxStation() {
         Radio rad = new Radio(20);
-        rad.setMaxStation();
         assertEquals(19, rad.getMaxStation());
-    }
-
-    @Test
-    void checkMaxStation2() {
-        Radio rad = new Radio();
-        rad.setMaxStation();
-        assertEquals(9, rad.getMaxStation());
     }
 
     ///Тестирование станций радио
