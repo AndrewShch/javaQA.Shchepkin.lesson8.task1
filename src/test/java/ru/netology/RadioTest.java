@@ -7,26 +7,20 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class RadioTest {
-    Radio rad = new Radio();
-    @Test
-     void createRadio() {
-        String expected = "Radio";
-        assertNull(rad.getName());
-        rad.setName(expected);
-        assertEquals(expected, rad.getName());
-    }
+    Radio rad = new Radio(20);
+
     @Test
     void initFields(){
-        assertEquals(9, rad.getMaxStation());
-        assertEquals(0, rad.getMinStation());
-        assertEquals(10, rad.getMaxVolume());
-        assertEquals(0, rad.getMinVolume());
-        assertFalse(rad.isOn());
+        Radio rad = new Radio(20);
+        assertEquals(20, rad.getMaxStation());
+        assertEquals(100, rad.getMaxVolume());
+
     }
 
     ///Тестирование станций радио
     @Test
     void shouldNotSetStationBelowMin() {
+        Radio rad = new Radio(20);
         rad.setCurrentStation(5);
 
         rad.setCurrentStation(-1);
@@ -35,38 +29,41 @@ public class RadioTest {
 
     @Test
     void shouldNotSetStationAboveMax() {
-        rad.setCurrentStation(9);
+        Radio rad = new Radio(20);
+        rad.setCurrentStation(18);
 
-        rad.setCurrentStation(10);
-        assertEquals(9, rad.getCurrentStation());
-    }
+        rad.setCurrentStation(21);
+        assertEquals(18, rad.getCurrentStation());
+  }
     @Test
     void increaseStation(){
-        rad.setCurrentStation(3);
-
-        rad.increaseStation();
-        assertEquals(4,rad.getCurrentStation());
+        Radio rad = new Radio(20);
+        rad.setCurrentStation(7);
+       rad.increaseStation();
+        assertEquals(8,rad.getCurrentStation());
     }
     @Test
     void transitionFromMaxToMinStation(){
-        rad.setCurrentStation(9);
+        Radio rad = new Radio(20);
+        rad.setCurrentStation(20);
 
         rad.increaseStation();
         assertEquals(0,rad.getCurrentStation());
     }
     @Test
     void downStation(){
-        rad.setCurrentStation(2);
-
+        Radio rad = new Radio(20);
+        rad.setCurrentStation(19);
         rad.downStation();
-        assertEquals(1,rad.getCurrentStation());
+        assertEquals(18,rad.getCurrentStation());
     }
     @Test
     void transitionFromMimToMaxStation(){
+        Radio rad = new Radio(20);
         rad.setCurrentStation(0);
 
         rad.downStation();
-        assertEquals(9,rad.getCurrentStation());
+        assertEquals(20,rad.getCurrentStation());
     }
 
     ///Тестирование громкости радио
@@ -79,38 +76,40 @@ public class RadioTest {
     }
     @Test
     void shouldNotSetVolumeAboveMax() {
-        rad.setCurrentVolume(10);
+        rad.setCurrentVolume(90);
 
-        rad.setCurrentVolume(11);
-        assertEquals(10, rad.getCurrentVolume());
+        rad.setCurrentVolume(101);
+        assertEquals(90, rad.getCurrentVolume());
     }
     @Test
     void increaseVolume(){
-        rad.setCurrentVolume(6);
+        Radio rad = new Radio();
+        rad.setCurrentVolume(90);
 
         rad.increaseVolume();
-        assertEquals(7,rad.getCurrentVolume());
+        assertEquals(91,rad.getCurrentVolume());
     }
     @Test
     void transitionFromMaxToMinVolume(){
-        rad.setCurrentVolume(10);
+        Radio rad = new Radio();
+        rad.setCurrentVolume(100);
 
         rad.increaseVolume();
-        assertEquals(0,rad.getCurrentVolume());
+        assertEquals(100,rad.getCurrentVolume());
     }
     @Test
     void downVolume(){
-        rad.setCurrentVolume(6);
+        rad.setCurrentVolume(80);
 
         rad.downVolume();
-        assertEquals(5,rad.getCurrentVolume());
+        assertEquals(79,rad.getCurrentVolume());
     }
     @Test
    void transitionFromMinToMaxVolume(){
        rad.setCurrentVolume(0);
 
        rad.downVolume();
-       assertEquals(10,rad.getCurrentVolume());
+       assertEquals(0,rad.getCurrentVolume());
     }
 
 }
